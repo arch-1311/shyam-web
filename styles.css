@@ -1,0 +1,114 @@
+/* Max width for desktop views */
+.content-container {
+    max-width: 800px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Left-align headers */
+h1, h2, nav {
+    text-align: left;
+}
+
+/* Optional: Limit the size for the profile image */
+.profile-image {
+    width: 250px;
+    height: 250px;
+}
+
+/* Light theme styles (default) */
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme styles */
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+/* Navigation */
+nav .nav-link {
+    padding: 0; /* Remove left padding */
+}
+
+/* Align icon to the right of nav links */
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Align nav links to the left */
+nav ul {
+    display: flex;
+    gap: 15px; /* Adjust gap between links */
+}
+
+/* Icon positioning */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+/* Hide content by default */
+.hidden {
+    display: none;
+}
+
+/* Styling for posts */
+.post-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post-list li {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-date {
+    margin-right: 10px; /* Space between date and title */
+}
+
+.post-title {
+    text-decoration: none; /* Remove underline */
+    color: #007bff; /* Link color */
+}
+
+.post-title:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/*Styling for Talks */
+.dotted-line {
+    border-top: 1px dotted #000;
+    margin-bottom: 20px;
+}
+
+.talks-section h3 {
+    font-weight: bold;
+    margin-top: 30px;
+}
+.talks-section{
+    font-family: IBM Plex sans-serif;
+    font-size: 16px;
+}
+.talks-list li {
+    margin-bottom: 15px;
+}
+
+.talks-list a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.talks-list p {
+    /* margin: 5px 0 0 0; */
+    color: #555;
+}

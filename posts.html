@@ -1,0 +1,68 @@
+<div class="container content-container mt-5" id="posts-content">
+    <h2 class="mb-3"><i class="fas fa-sticky-note"></i> Posts</h2>
+    <ul class="post-list">
+        <li>
+            <span class="post-date"><em>14 Jun, 2024</em></span>
+            <a href="#" class="post-title" data-post="post1">Building an expense tracker app</a>
+        </li>
+        <li>
+            <span class="post-date"><em>21 Apr, 2024</em></span>
+            <a href="#" class="post-title" data-post="post2">A Random Act of Kindness</a>
+        </li>
+        <li>
+            <span class="post-date"><em>27 Mar, 2024</em></span>
+            <a href="#" class="post-title" data-post="post3">Travelling with Tailscale</a>
+        </li>
+    </ul>
+
+    <!-- Post Details -->
+    <div class="post-content" id="post1" style="display: none;">
+        <h3>Building an expense tracker app</h3>
+        <p><strong>Date:</strong> 14 Jun, 2024</p>
+        <p><strong>Read Time:</strong> 11 minutes (2653 words)</p>
+        <p>A couple of weeks ago, I decided to start logging and tracking my expenses...</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9zN6CFRP-9A" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        <button class="back-button">Back to Posts</button>
+    </div>
+
+    <div class="post-content" id="post2" style="display: none;">
+        <h3>A Random Act of Kindness</h3>
+        <p>Details about this post will go here.</p>
+        <button class="back-button">Back to Posts</button>
+    </div>
+
+    <div class="post-content" id="post3" style="display: none;">
+        <h3>Travelling with Tailscale</h3>
+        <p>Details about this post will go here.</p>
+        <button class="back-button">Back to Posts</button>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.post-title').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default link behavior
+        const postId = item.getAttribute('data-post');
+
+        // Hide all post contents
+        document.querySelectorAll('.post-content').forEach(function (post) {
+            post.style.display = 'none';
+        });
+
+        // Show the selected post content
+        const selectedPost = document.getElementById(postId);
+        selectedPost.style.display = 'block';
+    });
+});
+
+// Back button functionality
+document.querySelectorAll('.back-button').forEach(function (button) {
+    button.addEventListener('click', function () {
+        // Hide all post contents
+        document.querySelectorAll('.post-content').forEach(function (post) {
+            post.style.display = 'none';
+        });
+    });
+});
+
+</script>
