@@ -36,6 +36,10 @@
             Lack of external data integration: Language models are typically limited to the knowledge they were trained on, making it challenging to provide answers based on real-time or external data.
             It’s important to note that the LLM does not actually execute any functions. Rather, we create a structure for the LLM to follow in its responses. The LLM would then generate a response with the content as a stringified JSON object following the schema provided in the function definiton.
             <br>
+            Inconsistent response format: Without function calling, responses from language models can be unstructured and inconsistent, requiring complex validation and parsing logic on the application side.
+            Lack of external data integration: Language models are typically limited to the knowledge they were trained on, making it challenging to provide answers based on real-time or external data.
+            It’s important to note that the LLM does not actually execute any functions. Rather, we create a structure for the LLM to follow in its responses. The LLM would then generate a response with the content as a stringified JSON object following the schema provided in the function definiton.
+            <br>
             I created a function called categorize_expense. This function takes a list of transactions as parameters, with each transaction having properties like transaction_date, amount, category, and description.</p>
     </div>
 
@@ -60,7 +64,7 @@
         <hr>
         <p>Details about this post will go here.</p>
     </div>
-
+    
 </div>
 
 

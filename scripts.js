@@ -108,15 +108,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Show/hide the scroll-to-top button based on the scroll position
-    window.onscroll = function () {
+    // Show/hide the scroll-to-top button based on reaching the bottom of the window
+    let debounceTimeout;
+
+window.onscroll = function () {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(() => {
         const scrollTopBtn = document.getElementById('scrollToTopBtn');
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollPosition = window.scrollY;
+
+        // Show button if scrolled near the bottom (e.g., within 100px)
+        if (scrollPosition + windowHeight >= documentHeight - 100) {
             scrollTopBtn.style.display = 'block';
         } else {
             scrollTopBtn.style.display = 'none';
         }
-    };
+    }, 100); // Adjust debounce time as needed
+};
+
 
     // Scroll to the top when the button is clicked
     document.getElementById('scrollToTopBtn').addEventListener('click', function () {
