@@ -59,6 +59,7 @@ nav ul {
 }
 
 /* Styling for posts */
+/* Existing Styles */
 .post-list {
     list-style-type: none;
     padding: 0;
@@ -83,6 +84,56 @@ nav ul {
 .post-title:hover {
     text-decoration: underline; /* Underline on hover */
 }
+
+/* New Styles for Post Content */
+.post-content {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    padding-top: 15px; /* Padding above the post content */
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Space between header and post content */
+}
+
+.post-header .post-date {
+    flex: 1;
+    text-align: left;
+    font-style: italic;
+    margin-right: 20px;
+    color: #555; /* Lighter color for date */
+}
+
+.post-header .post-read-time {
+    flex: 1;
+    text-align: right;
+    font-style: italic;
+    color: #555; /* Lighter color for read time */
+}
+
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99; /* Ensures button is above other content */
+    font-size: 25px; /* Icon size */
+    background-color: transparent; /* No background for button */
+    border: none; /* Remove default button border */
+    outline: none; /* Remove focus outline */
+    cursor: pointer; /* Pointer cursor on hover */
+    color: #007bff; /* Icon color */
+}
+
+#scrollToTopBtn:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
 
 /*Styling for Talks */
 .dotted-line {

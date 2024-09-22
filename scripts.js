@@ -1,20 +1,12 @@
 
 // Initial page load & navigate script
 document.addEventListener('DOMContentLoaded', () => {
+    attachNavEventListeners(); // Attach event listeners to navigation links only once
     loadPage('home.html'); // Load home.html by default
 });
 
-function loadPage(page) {
-    fetch(page)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('content-container').innerHTML = data;
-            attachEventListeners(); // Call a function to attach listeners here
-        })
-        .catch(error => console.log('Error loading page:', error));
-}
-//to toggle between each page
-function attachEventListeners() {
+// Function to attach navigation event listeners
+function attachNavEventListeners() {
     document.getElementById('home-link').addEventListener('click', (e) => {
         e.preventDefault();
         loadPage('home.html');
@@ -40,6 +32,18 @@ function attachEventListeners() {
         loadPage('contact.html');
     });
 }
+
+// Function to load page content dynamically
+function loadPage(page) {
+    fetch(page)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('content-container').innerHTML = data;
+            // Call additional functions to attach content-specific event listeners here if needed
+        })
+        .catch(error => console.log('Error loading page:', error));
+}
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 //Light & Dark Mode Toggle Script 
@@ -70,32 +74,64 @@ toggleIcon.addEventListener('click', function () {
 });
 //////////////////////////////////////////////////////////////////////////////////
 
-document.querySelectorAll('.post-title').forEach(function (item) {
-    item.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default link behavior
-        const postId = item.getAttribute('data-post');
+// post page function and toggle between each post on click
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to load HTML content into the #content-container
+    function loadPage(page) {
+        fetch(page)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content-container').innerHTML = data;
+                attachPostListeners(); // Attach listeners after loading the page content
+            });
+    }
 
-        // Hide all post contents
-        document.querySelectorAll('.post-content').forEach(function (post) {
-            post.style.display = 'none';
+    // Function to attach event listeners for posts
+    function attachPostListeners() {
+        document.querySelectorAll('.post-title').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Hide all post contents
+                document.querySelectorAll('.post-content').forEach(function (content) {
+                    content.style.display = 'none';
+                });
+
+                // Show the clicked post content
+                const postId = item.getAttribute('data-post');
+                const postElement = document.getElementById(postId);
+                postElement.style.display = 'block';
+
+                // Scroll to the post heading
+                postElement.querySelector('h3').scrollIntoView({ behavior: 'smooth' });
+            });
         });
+    }
 
-        // Show the selected post content
-        const selectedPost = document.getElementById(postId);
-        selectedPost.style.display = 'block';
+    // Show/hide the scroll-to-top button based on the scroll position
+    window.onscroll = function () {
+        const scrollTopBtn = document.getElementById('scrollToTopBtn');
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollTopBtn.style.display = 'block';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    };
+
+    // Scroll to the top when the button is clicked
+    document.getElementById('scrollToTopBtn').addEventListener('click', function () {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    });
+
+    // Initial navigation link listener
+    document.getElementById('posts-link').addEventListener('click', function (e) {
+        e.preventDefault();
+        loadPage('posts.html');
     });
 });
 
-// Back button functionality
-document.querySelectorAll('.back-button').forEach(function (button) {
-    button.addEventListener('click', function () {
-        // Hide all post contents
-        document.querySelectorAll('.post-content').forEach(function (post) {
-            post.style.display = 'none';
-        });
-    });
-});
 
+//////////////////////////////////////////////////////////////////////////////////
 
-
-
+       
